@@ -113,6 +113,8 @@ class Ui_MainWindow(object):
         font1 = QFont()
         font1.setFamilies([u"Arial"])
         font1.setPointSize(12)
+        font1.setBold(True)
+        font1.setStrikeOut(False)
         self.amber_mssgs_down_count.setFont(font1)
         self.amber_mssgs_down_count.setStyleSheet(u"color: rgb(254, 203, 0);\n"
 "\n"
@@ -121,24 +123,29 @@ class Ui_MainWindow(object):
         self.white_mssgs_down_count = QLabel(self.frame)
         self.white_mssgs_down_count.setObjectName(u"white_mssgs_down_count")
         self.white_mssgs_down_count.setGeometry(QRect(274, 89, 40, 23))
-        self.white_mssgs_down_count.setFont(font1)
+        font2 = QFont()
+        font2.setFamilies([u"Arial"])
+        font2.setPointSize(12)
+        font2.setBold(True)
+        self.white_mssgs_down_count.setFont(font2)
         self.white_mssgs_down_count.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "")
         self.white_mssgs_down_count.setIndent(4)
         self.white_mssgs_up_count = QLabel(self.frame)
         self.white_mssgs_up_count.setObjectName(u"white_mssgs_up_count")
         self.white_mssgs_up_count.setGeometry(QRect(274, 157, 40, 23))
-        self.white_mssgs_up_count.setFont(font1)
+        self.white_mssgs_up_count.setFont(font2)
         self.white_mssgs_up_count.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "")
         self.white_mssgs_up_count.setIndent(4)
         self.amber_mssgs_up_count = QLabel(self.frame)
         self.amber_mssgs_up_count.setObjectName(u"amber_mssgs_up_count")
         self.amber_mssgs_up_count.setGeometry(QRect(274, 66, 40, 23))
-        self.amber_mssgs_up_count.setFont(font1)
+        self.amber_mssgs_up_count.setFont(font2)
         self.amber_mssgs_up_count.setStyleSheet(u"color: rgb(254, 203, 0);\n"
 "\n"
 "")
+        self.amber_mssgs_up_count.setMidLineWidth(1)
         self.amber_mssgs_up_count.setIndent(4)
         self.arrow_white_down = QLabel(self.frame)
         self.arrow_white_down.setObjectName(u"arrow_white_down")

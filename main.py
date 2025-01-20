@@ -174,12 +174,17 @@ def scroll_up(request):
     CAS_logic.scroll_for_1_message(scroll_for_one_mssg_bttn_up=True, scroll_for_one_mssg_bttn_down=False)
     window.update_lines()
 
-def hide_message(request):
+def remove_message(request):
     json_body = json.loads(request.body().toStdString())
     message = json_body["message"]
     CAS_logic.remove_message(message)
     window.update_lines()
     print(CAS_logic.final_mssgs_list)
+
+def remove_all_messages(request):
+    CAS_logic.remove_all_messages()
+    window.update_lines()
+    window.update_counts()
 
 
 if __name__ == "__main__":
@@ -193,7 +198,8 @@ if __name__ == "__main__":
     web_server = QHttpServer()
     web_server.route("/api/show_message", show_message)
     web_server.route("/api/scroll_up", scroll_up)
-    web_server.route("/api/hide_message", hide_message)
+    web_server.route("/api/remove_message", remove_message)
+    web_server.route("/api/remove_all_messages", remove_all_messages)
 
     tcp_server = QTcpServer()
     tcp_server.listen(QHostAddress("0.0.0.0"), WEBAPI_PORT) 
