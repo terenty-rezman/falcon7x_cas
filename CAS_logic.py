@@ -222,6 +222,30 @@ def remove_message(message_to_delete):
     
     final_result()
 
+def remove_all_messages():
+    global all_recieved_mssgs
+    global display_mssgs
+    global recieved_red
+    global recieved_amber
+    global recieved_white
+    global visible_mssgs
+    global amber_and_white_mssgs
+    global scroll_index
+    global final_mssgs_list
+
+    # Очистка всех данных
+    all_recieved_mssgs.clear()
+    display_mssgs.clear()
+    recieved_red.clear()
+    recieved_amber.clear()
+    recieved_white.clear()
+    visible_mssgs.clear()
+    amber_and_white_mssgs.clear()
+    scroll_index = 0  # Сброс индекса прокрутки
+    final_mssgs_list = [None] * 10  # Сброс итогового списка сообщений
+
+    final_result()
+
 
 
 def final_result():
@@ -332,20 +356,20 @@ def final_result():
 
 ## Проверка
 final_result()
-# print(final_mssgs_list)
+print(final_mssgs_list)
 
 
-# add_mssg("IRS 1+2+3 NO POS ENTRY") #W  cruise = True
-# add_mssg("AVC: AGM #+#+# FAIL") #A  cruise = True
-# add_mssg("90 PRESS: CABIN ALT TOO HI") #R cruise = True
-# add_mssg("AVC: ASCB FAULT") #A cruise = False
-# add_mssg("AVC: APM 1+2+3+4 FAIL") #A cruise = False
-# add_mssg("15 COND: AFT FCS BOX OVHT") #R cruise = True
-# add_mssg("AVC AURAL WARN 1+2 INHIBIT") #W cruise = True
-# add_mssg("30 ELEC: BAT 1 OVHT") #R cruise = True
-# add_mssg("AVC: VALIDATE CONFIG") #W cruise = True
-# add_mssg("AVC: GEN IO 1+2+3+4+5 FAIL") #A cruise = True
-# add_mssg("AVC: MAU 1A+1B HI TEMP") #A cruise = True
+add_mssg("IRS 1+2+3 NO POS ENTRY") #W  cruise = True
+add_mssg("AVC: AGM #+#+# FAIL") #A  cruise = True
+add_mssg("90 PRESS: CABIN ALT TOO HI") #R cruise = True
+add_mssg("AVC: ASCB FAULT") #A cruise = False
+add_mssg("AVC: APM 1+2+3+4 FAIL") #A cruise = False
+add_mssg("15 COND: AFT FCS BOX OVHT") #R cruise = True
+add_mssg("AVC AURAL WARN 1+2 INHIBIT") #W cruise = True
+add_mssg("30 ELEC: BAT 1 OVHT") #R cruise = True
+add_mssg("AVC: VALIDATE CONFIG") #W cruise = True
+add_mssg("AVC: GEN IO 1+2+3+4+5 FAIL") #A cruise = True
+add_mssg("AVC: MAU 1A+1B HI TEMP") #A cruise = True
 # add_mssg("HUMID: FAULT") #"W"
 # add_mssg("31 ELEC: BAT 2 OVHT") #R
 # add_mssg("32 ELEC: BAT 1+2 OVHT") #R
@@ -354,7 +378,7 @@ final_result()
 # add_mssg("APU: AUTO SHUTDOWN")#A
 # add_mssg("DOOR: EMERG NOT SECURED") #A
 
-# print(final_mssgs_list)
+print(final_mssgs_list)
 
 # scroll_for_one_mssg_bttn_down = True # кнопка для прокрутки сообщений на 1 вниз
 # scroll_for_one_mssg_bttn_up = False # кнопка для прокрутки сообщений на 1 вверх
@@ -404,4 +428,5 @@ final_result()
 
 # add_mssg("IRS 1+2+3 NO POS ENTRY") #W  cruise = True
 
-# print(final_mssgs_list)
+remove_all_messages()
+print(final_mssgs_list)

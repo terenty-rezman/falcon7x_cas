@@ -365,6 +365,8 @@
       <font>
        <family>Arial</family>
        <pointsize>12</pointsize>
+       <bold>true</bold>
+       <strikeout>false</strikeout>
       </font>
      </property>
      <property name="styleSheet">
@@ -392,6 +394,7 @@
       <font>
        <family>Arial</family>
        <pointsize>12</pointsize>
+       <bold>true</bold>
       </font>
      </property>
      <property name="styleSheet">
@@ -418,6 +421,7 @@
       <font>
        <family>Arial</family>
        <pointsize>12</pointsize>
+       <bold>true</bold>
       </font>
      </property>
      <property name="styleSheet">
@@ -444,12 +448,16 @@
       <font>
        <family>Arial</family>
        <pointsize>12</pointsize>
+       <bold>true</bold>
       </font>
      </property>
      <property name="styleSheet">
       <string notr="true">color: rgb(254, 203, 0);
 
 </string>
+     </property>
+     <property name="midLineWidth">
+      <number>1</number>
      </property>
      <property name="text">
       <string>03</string>
