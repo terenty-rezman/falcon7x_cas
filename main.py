@@ -16,14 +16,15 @@ from PySide6.QtCore import (
     Qt, 
     QSettings,
     QByteArray,
-    QTimer
+    QTimer,
 )
 from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 
-from PySide6.QtWidgets import QApplication, QMainWindow
+from PySide6.QtWidgets import QApplication, QMainWindow, QMenu
+from PySide6.QtGui import QAction
 from CAS_interface_small import Ui_MainWindow
 from PySide6.QtNetwork import QTcpSocket, QTcpServer, QHostAddress
 from PySide6.QtHttpServer import QHttpServer
@@ -55,7 +56,21 @@ class MainWindow(QMainWindow):
         self.update_lines()
         self.update_counts()
 
-        self.setWindowFlags(Qt.FramelessWindowHint)
+        self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
+    
+    def contextMenuEvent(self, event):
+        # Create a context menu
+        context_menu = QMenu(self)
+
+        # Add a "Close" action to the context menu
+        close_action = QAction("Close", self)
+        close_action.triggered.connect(self.close)  # Connect the action to the close method
+
+        # Add the action to the menu
+        context_menu.addAction(close_action)
+
+        # Show the context menu at the mouse position
+        context_menu.exec(event.globalPos())
 
     def mousePressEvent(self, event):
         # Store the positions of mouse and window and
