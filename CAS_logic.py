@@ -4,7 +4,7 @@ import falcon7x_core.cas.messages as all_messages
 all_recieved_mssgs = {
     
 }
-current_regime = 'cruise' # текущий режима
+current_regime = all_messages.Regimes.CRUISE # текущий режима
 display_mssgs  = list() # все сообщения, которые нужно отобразить
 recieved_red = list() # полученные красные сообщения
 recieved_amber = list() # полученные желтые сообщения
@@ -26,18 +26,16 @@ white_count_down = 0
 
 
 # функция для добавления пришедшего сообщения в общий список и сортировки его по цвету
-def add_mssg(msg_text):
+def add_mssg(msg_cls: all_messages.CASmssg):
+    msg_text = str(msg_cls)
 
     if msg_text in all_recieved_mssgs:
         return
 
-    msg_cls: all_messages.CASmssg = all_messages.all_mssgs[msg_text]
-
-    # msg_cls.is_read = False
+    msg_cls.isread = False
     all_recieved_mssgs[msg_text] = msg_cls # добавление класса с сообщением в словарь: ключ - текст сообщения, значение - его класс
     
     all_recieved_mssgs_values = list(all_recieved_mssgs.values()) # получение классов из словаря
-    
 
     # сортировка последнего полученного сообщения (если пришедшее сообщение добавляется в начало списка)
     if all_recieved_mssgs_values[-1].color == 'R':
@@ -46,7 +44,6 @@ def add_mssg(msg_text):
         recieved_amber.insert(0, all_recieved_mssgs_values[-1])
     else:
         recieved_white.insert(0, all_recieved_mssgs_values[-1])
-    
     
     # список всех отсортированных сообщений
     global display_mssgs
@@ -57,8 +54,6 @@ def add_mssg(msg_text):
     final_result()
 
     return msg_cls.color
-
-    
 
 
 def scroll_for_1_message(scroll_for_one_mssg_bttn_down, scroll_for_one_mssg_bttn_up):
@@ -154,7 +149,7 @@ def reading_mssgs(bttn_to_read_mssgs):
 
 
 # функция для удаления сообщения
-def remove_message(message_to_delete):
+def remove_message(message_to_delete: all_messages.CASmssg):
     global display_mssgs
     global visible_mssgs
     global recieved_red
@@ -163,64 +158,31 @@ def remove_message(message_to_delete):
 
     # обновление списка полученных красных
     for item_r in recieved_red:
-        if message_to_delete == item_r.text:
+        if message_to_delete == item_r:
             recieved_red.remove(item_r)
     # обновление списка полученных желтых
     for item_a in recieved_amber:
-        if message_to_delete == item_a.text:
+        if message_to_delete == item_a:
             recieved_amber.remove(item_a)
     # обновление списка полученных белых
     for item_w in recieved_white:
-        if message_to_delete == item_w.text:
+        if message_to_delete == item_w:
             recieved_white.remove(item_w)
     
     # удаление сообщения в общем списке сообщений
     for item_d in display_mssgs:
-        if message_to_delete == item_d.text:
+        if message_to_delete == item_d:
             display_mssgs.remove(item_d)
 
     # удаление сообщения в отображаемом списке сообщений
     for item_v in visible_mssgs:
-        if message_to_delete == item_v.text:
+        if message_to_delete == item_v:
             visible_mssgs.remove(item_v)
 
-    del all_recieved_mssgs[message_to_delete]
+    del all_recieved_mssgs[str(message_to_delete)]
     
     final_result()
 
-def remove_message(message_to_delete):
-    global display_mssgs
-    global visible_mssgs
-    global recieved_red
-    global recieved_amber
-    global recieved_white
-
-    # обновление списка полученных красных
-    for item_r in recieved_red:
-        if message_to_delete == item_r.text:
-            recieved_red.remove(item_r)
-    # обновление списка полученных желтых
-    for item_a in recieved_amber:
-        if message_to_delete == item_a.text:
-            recieved_amber.remove(item_a)
-    # обновление списка полученных белых
-    for item_w in recieved_white:
-        if message_to_delete == item_w.text:
-            recieved_white.remove(item_w)
-    
-    # удаление сообщения в общем списке сообщений
-    for item_d in display_mssgs:
-        if message_to_delete == item_d.text:
-            display_mssgs.remove(item_d)
-
-    # удаление сообщения в отображаемом списке сообщений
-    for item_v in visible_mssgs:
-        if message_to_delete == item_v.text:
-            visible_mssgs.remove(item_v)
-
-    del all_recieved_mssgs[message_to_delete]
-    
-    final_result()
 
 def remove_all_messages():
     global all_recieved_mssgs
@@ -348,28 +310,23 @@ def final_result():
 
     # print(final_mssgs_list)
     # print(amber_count_down, white_count_down,amber_count_up,white_count_up)
-    
-    
-
-    
 
 
 ## Проверка
 final_result()
 print(final_mssgs_list)
 
-
-add_mssg("IRS 1+2+3 NO POS ENTRY") #W  cruise = True
-add_mssg("AVC: AGM #+#+# FAIL") #A  cruise = True
-add_mssg("90 PRESS: CABIN ALT TOO HI") #R cruise = True
-add_mssg("AVC: ASCB FAULT") #A cruise = False
-add_mssg("AVC: APM 1+2+3+4 FAIL") #A cruise = False
-add_mssg("15 COND: AFT FCS BOX OVHT") #R cruise = True
-add_mssg("AVC AURAL WARN 1+2 INHIBIT") #W cruise = True
-add_mssg("30 ELEC: BAT 1 OVHT") #R cruise = True
-add_mssg("AVC: VALIDATE CONFIG") #W cruise = True
-add_mssg("AVC: GEN IO 1+2+3+4+5 FAIL") #A cruise = True
-add_mssg("AVC: MAU 1A+1B HI TEMP") #A cruise = True
+add_mssg(all_messages.IRS_1_2_3_NO_POS_ENTRY) #W  cruise = True
+add_mssg(all_messages.AVC_AGM_FAIL) #A  cruise = True
+add_mssg(all_messages.PRESS_CABIN_ALT_TOO_HI) #R cruise = True
+add_mssg(all_messages.AVC_ASCB_FAULT) #A cruise = False
+add_mssg(all_messages.AVC_APM_1_2_3_4_FAIL) #A cruise = False
+add_mssg(all_messages.COND_AFT_FCS_BOX_OVHT) #R cruise = True
+add_mssg(all_messages.AVC_AURAL_WARN_1_2_INHIBIT) #W cruise = True
+add_mssg(all_messages.ELEC_BAT_1_OVHT) #R cruise = True
+add_mssg(all_messages.AVC_VALIDATE_CONFIG) #W cruise = True
+add_mssg(all_messages.AVC_GEN_IO_1_2_3_4_5_FAIL) #A cruise = True
+add_mssg(all_messages.AVC_MAU_1A_1B_HI_TEMP) #A cruise = True
 # add_mssg("HUMID: FAULT") #"W"
 # add_mssg("31 ELEC: BAT 2 OVHT") #R
 # add_mssg("32 ELEC: BAT 1+2 OVHT") #R

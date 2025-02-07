@@ -106,7 +106,6 @@ class MainWindow(QMainWindow):
         self.setGeometry(QRect(x, y, w, h))
         settings.endGroup()
 
-
     def update_lines(self):
 
         # if len(CAS_logic.final_mssgs_list) < 10 or CAS_logic.final_mssgs_list[0] == None:
@@ -165,22 +164,27 @@ class MainWindow(QMainWindow):
             if msg != "END":
                 line.setIndent(5)
                 line.setAlignment(Qt.AlignmentFlag.AlignLeft)
-            
         return
     
-
     def update_counts(self):
             self.ui.amber_mssgs_down_count.setText(f"{CAS_logic.amber_count_down_str}")
             self.ui.amber_mssgs_up_count.setText(f"{CAS_logic.amber_count_up_str}")
             self.ui.white_mssgs_down_count.setText(f"{CAS_logic.white_count_down_str}")
             self.ui.white_mssgs_up_count.setText(f"{CAS_logic.white_count_up_str}")
 
+
+def auto_read(msg_cls: CAS_logic.all_messages.CASmssg):
+    msg_cls.isread = True
+    window.update_lines()
+
+
 def show_message(request):
     json_body = json.loads(request.body().toStdString())
     message = json_body["message"]
-    msg_color = CAS_logic.add_mssg(message)
+    msg_cls = CAS_logic.all_messages.all_mssgs[message]
+    msg_color = CAS_logic.add_mssg(msg_cls)
     if msg_color == "W":
-        QTimer.singleShot(5000, app, lambda: print(f"{message} прочитано"))
+        QTimer.singleShot(10000, app, lambda: auto_read(msg_cls))
 
     window.update_lines()
 
@@ -189,17 +193,27 @@ def scroll_up(request):
     CAS_logic.scroll_for_1_message(scroll_for_one_mssg_bttn_up=True, scroll_for_one_mssg_bttn_down=False)
     window.update_lines()
 
+
 def remove_message(request):
     json_body = json.loads(request.body().toStdString())
     message = json_body["message"]
-    CAS_logic.remove_message(message)
+    msg_cls = CAS_logic.all_messages.all_mssgs[message]
+    CAS_logic.remove_message(msg_cls)
     window.update_lines()
     print(CAS_logic.final_mssgs_list)
+
 
 def remove_all_messages(request):
     CAS_logic.remove_all_messages()
     window.update_lines()
     window.update_counts()
+
+
+def set_regime(request):
+    json_body = json.loads(request.body().toStdString())
+    regime = json_body["regime"]
+    CAS_logic.current_regime = CAS_logic.all_messages.Regimes(regime) 
+    window.update_lines()
 
 
 if __name__ == "__main__":
@@ -215,10 +229,10 @@ if __name__ == "__main__":
     web_server.route("/api/scroll_up", scroll_up)
     web_server.route("/api/remove_message", remove_message)
     web_server.route("/api/remove_all_messages", remove_all_messages)
+    web_server.route("/api/set_regime", set_regime)
 
     tcp_server = QTcpServer()
     tcp_server.listen(QHostAddress("0.0.0.0"), WEBAPI_PORT) 
     web_server.bind(tcp_server)
 
     sys.exit(app.exec())
-
