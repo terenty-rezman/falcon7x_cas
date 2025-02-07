@@ -1,4 +1,4 @@
-import all_messages
+import falcon7x_core.cas.messages as all_messages
 
 # словарь со всеми полученными сообщениями
 all_recieved_mssgs = {

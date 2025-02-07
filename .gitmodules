@@ -1,0 +1,3 @@
+[submodule "falcon7x_core"]
+	path = falcon7x_core
+	url = git@github.com:terenty-rezman/falcon7x_core.git
