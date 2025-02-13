@@ -1,15 +1,15 @@
 import requests
 from time import sleep
 
-requests.get("http://127.0.0.1:8881/api/show_message", json = {"message": "BLEED: APU FAULT"}) #A
+requests.get("http://127.0.0.1:8881/api/show_message", json = {"message": "BLEED_APU_FAULT"}) #A
 sleep(1)
-requests.get("http://127.0.0.1:8881/api/show_message", json = {"message": "90 PRESS: CABIN ALT TOO HI"}) #R
+requests.get("http://127.0.0.1:8881/api/show_message", json = {"message": "PRESS_CABIN_ALT_TOO_HI"}) #R
 sleep(1)
-requests.get("http://127.0.0.1:8881/api/show_message", json = {"message": "HUMID: FAULT"}) #W
+requests.get("http://127.0.0.1:8881/api/show_message", json = {"message": "HUMID_FAULT"}) #W
 
 sleep(5)
 
-requests.get("http://127.0.0.1:8881/api/remove_message", json = {"message": "BLEED: APU FAULT"})
+requests.get("http://127.0.0.1:8881/api/remove_message", json = {"message": "BLEED_APU_FAULT"})
 
 sleep(1)
 
