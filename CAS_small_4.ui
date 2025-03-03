@@ -470,7 +470,7 @@
      <property name="geometry">
       <rect>
        <x>300</x>
-       <y>163</y>
+       <y>165</y>
        <width>11</width>
        <height>9</height>
       </rect>
@@ -479,7 +479,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>../../python/white_arrow_down.png</pixmap>
+      <pixmap>white_arrow_down.png</pixmap>
      </property>
     </widget>
     <widget class="QLabel" name="arrow_amber_down">
@@ -498,7 +498,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>../../python/amber_arrow_down.png</pixmap>
+      <pixmap>amber_arrow_down.png</pixmap>
      </property>
     </widget>
     <widget class="QLabel" name="arrow_white_up">
@@ -514,7 +514,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>../../python/white_arrow_up.png</pixmap>
+      <pixmap>white_arrow_up.png</pixmap>
      </property>
     </widget>
     <widget class="QLabel" name="arrow_amber_up">
@@ -533,7 +533,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>../../python/amber_arrow_up.png</pixmap>
+      <pixmap>amber_arrow_up.png</pixmap>
      </property>
     </widget>
    </widget>

@@ -7,15 +7,25 @@ requests.get("http://127.0.0.1:8881/api/show_message", json = {"message": "PRESS
 sleep(1)
 requests.get("http://127.0.0.1:8881/api/show_message", json = {"message": "HUMID_FAULT"}) #W
 
-sleep(5)
+# sleep(5)
 
-requests.get("http://127.0.0.1:8881/api/remove_message", json = {"message": "BLEED_APU_FAULT"})
+# requests.get("http://127.0.0.1:8881/api/remove_message", json = {"message": "BLEED_APU_FAULT"})
 
+# sleep(1)
+
+# requests.get("http://127.0.0.1:8881/api/remove_all_messages")
+# sleep(1)
+
+# requests.get("http://127.0.0.1:8881/api/show_message", json = {"message": "BLEED_APU_FAULT"}) #A
+# sleep(1)
+# requests.get("http://127.0.0.1:8881/api/show_message", json = {"message": "PRESS_CABIN_ALT_TOO_HI"}) #R
+# sleep(1)
+# requests.get("http://127.0.0.1:8881/api/show_message", json = {"message": "HUMID_FAULT"}) #W
+
+# sleep(1)
+
+requests.get("http://127.0.0.1:8881/api/read_message")
 sleep(1)
-
-requests.get("http://127.0.0.1:8881/api/remove_all_messages")
-
-
 
 # add_mssg("IRS 1+2+3 NO POS ENTRY") #W  cruise = True
 # add_mssg("AVC: AGM #+#+# FAIL") #A  cruise = True

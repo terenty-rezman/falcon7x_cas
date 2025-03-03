@@ -115,6 +115,9 @@ class MainWindow(QMainWindow):
 
         for line in self.lines:
             line.setText("")
+            line.setStyleSheet(
+                "color: rgb(255, 255, 255);\n" "background-color: rgb(0, 0, 0);"
+                )
 
         for msg, line in zip(CAS_logic.final_mssgs_list, self.lines):
             if msg is None:
@@ -188,6 +191,11 @@ def show_message(request):
 
     window.update_lines()
 
+def read_message(request):
+    CAS_logic.reading_mssgs(True)
+    window.update_lines()
+    window.update_counts()
+
 
 def scroll_up(request):
     CAS_logic.scroll_for_1_message(scroll_for_one_mssg_bttn_up=True, scroll_for_one_mssg_bttn_down=False)
@@ -230,6 +238,7 @@ if __name__ == "__main__":
     web_server.route("/api/remove_message", remove_message)
     web_server.route("/api/remove_all_messages", remove_all_messages)
     web_server.route("/api/set_regime", set_regime)
+    web_server.route("/api/read_message", read_message)
 
     tcp_server = QTcpServer()
     tcp_server.listen(QHostAddress("0.0.0.0"), WEBAPI_PORT) 
