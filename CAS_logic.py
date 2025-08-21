@@ -176,7 +176,8 @@ def remove_message(message_to_delete: all_messages.CASmssg):
         if message_to_delete == item_v:
             visible_mssgs.remove(item_v)
 
-    del all_recieved_mssgs[str(message_to_delete)]
+    if str(message_to_delete) in all_recieved_mssgs:
+        del all_recieved_mssgs[str(message_to_delete)]
     
     final_result()
 

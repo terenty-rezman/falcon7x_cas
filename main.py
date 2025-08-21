@@ -190,6 +190,7 @@ def show_message(request):
         QTimer.singleShot(10000, app, lambda: auto_read(msg_cls))
 
     window.update_lines()
+    print("show msg", msg_cls)
 
 def read_message(request):
     CAS_logic.reading_mssgs(True)
@@ -208,7 +209,8 @@ def remove_message(request):
     msg_cls = CAS_logic.all_messages.all_mssgs[message]
     CAS_logic.remove_message(msg_cls)
     window.update_lines()
-    print(CAS_logic.final_mssgs_list)
+    print("remove msg", msg_cls)
+    # print(CAS_logic.final_mssgs_list)
 
 
 def remove_all_messages(request):
@@ -222,6 +224,7 @@ def set_regime(request):
     regime = json_body["regime"]
     CAS_logic.current_regime = CAS_logic.all_messages.Regimes(regime) 
     window.update_lines()
+    print("set regime", regime)
 
 
 if __name__ == "__main__":
