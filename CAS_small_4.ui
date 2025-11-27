@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>323</width>
-    <height>201</height>
+    <height>192</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -28,14 +28,14 @@
   <widget class="QWidget" name="centralwidget">
    <property name="minimumSize">
     <size>
-     <width>323</width>
-     <height>180</height>
+     <width>340</width>
+     <height>192</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
-     <width>323</width>
-     <height>180</height>
+     <width>340</width>
+     <height>192</height>
     </size>
    </property>
    <property name="styleSheet">
@@ -46,8 +46,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>323</width>
-      <height>180</height>
+      <width>340</width>
+      <height>192</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -65,7 +65,7 @@
        <x>5</x>
        <y>0</y>
        <width>253</width>
-       <height>180</height>
+       <height>192</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -83,7 +83,7 @@
         <x>0</x>
         <y>0</y>
         <width>253</width>
-        <height>18</height>
+        <height>19</height>
        </rect>
       </property>
       <property name="font">
@@ -93,6 +93,9 @@
         <bold>false</bold>
         <kerning>false</kerning>
        </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
       </property>
       <property name="styleSheet">
        <string notr="true"/>
@@ -105,9 +108,9 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>18</y>
+        <y>19</y>
         <width>253</width>
-        <height>18</height>
+        <height>19</height>
        </rect>
       </property>
       <property name="font">
@@ -129,9 +132,9 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>36</y>
+        <y>38</y>
         <width>253</width>
-        <height>18</height>
+        <height>19</height>
        </rect>
       </property>
       <property name="font">
@@ -153,9 +156,9 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>54</y>
+        <y>57</y>
         <width>253</width>
-        <height>18</height>
+        <height>19</height>
        </rect>
       </property>
       <property name="font">
@@ -177,9 +180,9 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>72</y>
+        <y>76</y>
         <width>253</width>
-        <height>18</height>
+        <height>19</height>
        </rect>
       </property>
       <property name="font">
@@ -201,9 +204,9 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>90</y>
+        <y>95</y>
         <width>253</width>
-        <height>18</height>
+        <height>19</height>
        </rect>
       </property>
       <property name="font">
@@ -231,9 +234,9 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>108</y>
+        <y>114</y>
         <width>253</width>
-        <height>18</height>
+        <height>19</height>
        </rect>
       </property>
       <property name="font">
@@ -255,9 +258,9 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>126</y>
+        <y>133</y>
         <width>253</width>
-        <height>18</height>
+        <height>19</height>
        </rect>
       </property>
       <property name="font">
@@ -279,9 +282,9 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>144</y>
+        <y>152</y>
         <width>253</width>
-        <height>18</height>
+        <height>19</height>
        </rect>
       </property>
       <property name="font">
@@ -303,9 +306,9 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>162</y>
+        <y>171</y>
         <width>253</width>
-        <height>18</height>
+        <height>19</height>
        </rect>
       </property>
       <property name="font">
@@ -538,7 +541,6 @@
     </widget>
    </widget>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>
