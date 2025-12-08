@@ -56,7 +56,8 @@ class MainWindow(QMainWindow):
         self.update_lines()
         self.update_counts()
 
-        self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
+        # self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
+        self.setWindowFlags(Qt.FramelessWindowHint)
     
     def contextMenuEvent(self, event):
         # Create a context menu
